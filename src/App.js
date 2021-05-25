@@ -33,7 +33,35 @@ class App extends Component {
       )
       .catch((error) => console.error(error));
   };
-
+  deleteMovie = (event) => {
+    axios
+      .delete(
+        "https://movie-basement-api.herokuapp.com/api/movies" +
+          event.target.value
+      )
+      .then((response) => {
+        this.getPeople();
+      });
+  };
+  updateMovie = (event) => {
+    event.preventDefault();
+    const id = event.target.id;
+    axios
+      .put(
+        "https://movie-basement-api.herokuapp.com/api/movies" + id,
+        this.state
+      )
+      .then((response) => {
+        this.getPeople();
+        this.setState({
+          title: "",
+          image: "",
+          year: "",
+          synopsis: "",
+          rating: "",
+        });
+      });
+  };
   componentDidMount = () => {
     this.getMovie();
   };
@@ -98,6 +126,22 @@ class App extends Component {
               <p>{movie.synopsis}</p>
               <h4> released: {movie.year}</h4>
               <h4>{movie.rating}</h4>
+              <button value={movie.id} onClick={this.deleteMovie}>
+                Delete Movie
+              </button>
+              <details>
+                <summary>Edit Person</summary>
+                <form id={movie.id} onSubmit={this.updateMovie}>
+                  <label htmlFor="name">Name</label>
+                  <br />
+                  <input type="text" id="name" onChange={this.handleChange} />
+                  <label htmlFor="age">Age</label>
+                  <br />
+                  <input type="text" id="age" onChange={this.handleChange} />
+                  <br />
+                  <input type="submit" value="Update Person" />
+                </form>
+              </details>
             </div>
           );
         })}
