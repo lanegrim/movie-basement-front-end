@@ -130,16 +130,36 @@ class App extends Component {
                 Delete Movie
               </button>
               <details>
-                <summary>Edit Person</summary>
+                <summary>Edit Movie</summary>
                 <form id={movie.id} onSubmit={this.updateMovie}>
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="title">Title</label>
                   <br />
-                  <input type="text" id="name" onChange={this.handleChange} />
-                  <label htmlFor="age">Age</label>
+                  <input type="text" id="title" onChange={this.handleChange} />
                   <br />
-                  <input type="text" id="age" onChange={this.handleChange} />
+                  <label htmlFor="image">image</label>
                   <br />
-                  <input type="submit" value="Update Person" />
+                  <input type="text" id="image" onChange={this.handleChange} />
+                  <br />
+                  <br />
+                  <label htmlFor="synopsis">synopsis</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="synopsis"
+                    onChange={this.handleChange}
+                  />
+                  <br />
+                  <br />
+                  <label htmlFor="year">year</label>
+                  <br />
+                  <input type="text" id="year" onChange={this.handleChange} />
+                  <br />
+                  <br />
+                  <label htmlFor="rating">rating</label>
+                  <br />
+                  <input type="text" id="rating" onChange={this.handleChange} />
+                  <br />
+                  <input type="submit" value="Update Movie" />
                 </form>
               </details>
             </div>
