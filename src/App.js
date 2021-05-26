@@ -36,7 +36,7 @@ class App extends Component {
   deleteMovie = (event) => {
     axios
       .delete(
-        "https://movie-basement-api.herokuapp.com/api/movies" +
+        "https://movie-basement-api.herokuapp.com/api/movies/" +
           event.target.value
       )
       .then((response) => {
@@ -48,7 +48,7 @@ class App extends Component {
     const id = event.target.id;
     axios
       .put(
-        "https://movie-basement-api.herokuapp.com/api/movies" + id,
+        "https://movie-basement-api.herokuapp.com/api/movies/" + id,
         this.state
       )
       .then((response) => {
