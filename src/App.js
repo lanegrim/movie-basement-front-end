@@ -116,7 +116,7 @@ class App extends Component {
             value={this.state.rating}
           />
           <br />
-          <input type="submit" value="Create Person" />
+          <input type="submit" value="Create Movie" />
         </form>
         {this.state.movies.map((movie) => {
           return (
