@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import Movie from './components/EditForm'
 import axios from "axios";
 
 class App extends Component {
@@ -119,51 +121,7 @@ class App extends Component {
           <input type="submit" value="Create Movie" />
         </form>
         {this.state.movies.map((movie) => {
-          return (
-            <div className="movie">
-              <h4>{movie.title}</h4>
-              <img src={movie.image} />
-              <p>{movie.synopsis}</p>
-              <h4> released: {movie.year}</h4>
-              <h4>{movie.rating}</h4>
-              <button value={movie.id} onClick={this.deleteMovie}>
-                Delete Movie
-              </button>
-              <details>
-                <summary>Edit Movie</summary>
-                <form id={movie.id} onSubmit={this.updateMovie}>
-                  <label htmlFor="title">Title</label>
-                  <br />
-                  <input type="text" id="title" onChange={this.handleChange} />
-                  <br />
-                  <label htmlFor="image">image</label>
-                  <br />
-                  <input type="text" id="image" onChange={this.handleChange} />
-                  <br />
-                  <br />
-                  <label htmlFor="synopsis">synopsis</label>
-                  <br />
-                  <input
-                    type="text"
-                    id="synopsis"
-                    onChange={this.handleChange}
-                  />
-                  <br />
-                  <br />
-                  <label htmlFor="year">year</label>
-                  <br />
-                  <input type="text" id="year" onChange={this.handleChange} />
-                  <br />
-                  <br />
-                  <label htmlFor="rating">rating</label>
-                  <br />
-                  <input type="text" id="rating" onChange={this.handleChange} />
-                  <br />
-                  <input type="submit" value="Update Movie" />
-                </form>
-              </details>
-            </div>
-          );
+          return 
         })}
       </div>
     );
