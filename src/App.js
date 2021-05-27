@@ -62,7 +62,7 @@ class App extends Component {
     const id = event.target.id;
     axios
       .put(
-        "https://movie-basement-api.herokuapp.com/api/movies/" + id,
+        "http://movie-basement-api.herokuapp.com/api/movies/" + id,
         this.state
       )
       .then((response) => {
