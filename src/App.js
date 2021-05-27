@@ -36,7 +36,7 @@ class App extends Component {
   deleteMovie = (event) => {
     axios
       .delete(
-        "https://movie-basement-api.herokuapp.com/api/movies" +
+        "https://movie-basement-api.herokuapp.com/api/movies/" +
           event.target.value
       )
       .then((response) => {
@@ -48,7 +48,7 @@ class App extends Component {
     const id = event.target.id;
     axios
       .put(
-        "https://movie-basement-api.herokuapp.com/api/movies" + id,
+        "https://movie-basement-api.herokuapp.com/api/movies/" + id,
         this.state
       )
       .then((response) => {
@@ -116,7 +116,7 @@ class App extends Component {
             value={this.state.rating}
           />
           <br />
-          <input type="submit" value="Create Person" />
+          <input type="submit" value="Create Movie" />
         </form>
         {this.state.movies.map((movie) => {
           return (
