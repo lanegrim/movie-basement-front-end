@@ -41,7 +41,7 @@ export default class AddForm extends Component {
             title_search: "",
         })
         axios
-            .get("http://www.omdbapi.com/?t=" + this.state.title_search + "&apikey=" + process.env.REACT_APP_APIKEY)
+            .get("https://www.omdbapi.com/?t=" + this.state.title_search + "&apikey=" + process.env.REACT_APP_APIKEY)
             .then(
                 (response) => this.setState({
                     title: response.data.Title,
