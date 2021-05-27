@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import Movie from './components/EditForm'
+import Nav from './components/Header'
+
 import axios from "axios";
 
 class App extends Component {
@@ -45,6 +47,8 @@ class App extends Component {
         this.getPeople();
       });
   };
+
+  //UPDATE 
   updateMovie = (event) => {
     event.preventDefault();
     const id = event.target.id;
@@ -64,12 +68,15 @@ class App extends Component {
         });
       });
   };
+
+  //DID MOUNT
   componentDidMount = () => {
     this.getMovie();
   };
   render() {
     return (
       <div>
+    <Nav />     
         <h1> Movie Basement </h1>
         <h2>Create New Movie</h2>
         <form onSubmit={this.handleSubmit}>
@@ -121,7 +128,11 @@ class App extends Component {
           <input type="submit" value="Create Movie" />
         </form>
         {this.state.movies.map((movie) => {
-          return 
+          // return (
+          //   <Movie 
+          //     updateMovie={this.updateMovie}
+          //   />
+          // )
         })}
       </div>
     );
