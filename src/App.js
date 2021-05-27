@@ -4,6 +4,7 @@ import Movie from './components/EditForm'
 import Nav from './components/Header'
 
 import axios from "axios";
+import Movie from "./components/Movie";
 
 class App extends Component {
   state = {
@@ -44,7 +45,7 @@ class App extends Component {
           event.target.value
       )
       .then((response) => {
-        this.getPeople();
+        this.getMovie();
       });
   };
 
@@ -58,7 +59,7 @@ class App extends Component {
         this.state
       )
       .then((response) => {
-        this.getPeople();
+        this.getMovie();
         this.setState({
           title: "",
           image: "",
@@ -76,63 +77,8 @@ class App extends Component {
   render() {
     return (
       <div>
-    <Nav />     
-        <h1> Movie Basement </h1>
-        <h2>Create New Movie</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title:</label>
-          <br />
-          <input
-            type="text"
-            id="title"
-            onChange={this.handleChange}
-            value={this.state.title}
-          />
-          <br />
-          <label htmlFor="image">image:</label>
-          <br />
-          <input
-            type="text"
-            id="image"
-            onChange={this.handleChange}
-            value={this.state.image}
-          />
-          <br />
-          <label htmlFor="synopsis">synopsis:</label>
-          <br />
-          <input
-            type="text"
-            id="synopsis"
-            onChange={this.handleChange}
-            value={this.state.synopsis}
-          />
-          <br />
-          <label htmlFor="year">year:</label>
-          <br />
-          <input
-            type="text"
-            id="year"
-            onChange={this.handleChange}
-            value={this.state.year}
-          />
-          <br />
-          <label htmlFor="rating">rating:</label>
-          <br />
-          <input
-            type="text"
-            id="rating"
-            onChange={this.handleChange}
-            value={this.state.rating}
-          />
-          <br />
-          <input type="submit" value="Create Movie" />
-        </form>
         {this.state.movies.map((movie) => {
-          // return (
-          //   <Movie 
-          //     updateMovie={this.updateMovie}
-          //   />
-          // )
+          return <Movie movie={movie} />;
         })}
       </div>
     );
