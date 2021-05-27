@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 export default class AddForm extends Component {
     state = {
         title: "",
@@ -21,8 +22,16 @@ export default class AddForm extends Component {
     }
 
     callAPI = () => {
+        this.setState({
+            title: "",
+            image: "",
+            year: "",
+            synopsis: "",
+            rating: "",
+            title_search: "",
+        })
         axios
-            .get("http://www.omdbapi.com/?" + "t=" + this.state.title_search + "apikey=" + process.env.APIKEY)
+            .get("http://www.omdbapi.com/?t=" + this.state.title_search + "apikey=" + process.env.APIKEY)
             .then(
                 (response) => this.setState({
                     title: response.data.Title,
@@ -30,18 +39,17 @@ export default class AddForm extends Component {
                     year: response.data.Year,
                     synopsis: response.data.Plot,
                 }),
-                (err) => console.error(err)
+                (error) => console.error(error)
             )
             .catch((error) => console.error(error));
     };
-
 
     render() {
         return (
             <div>
                 <h2>Create New Movie</h2>
                 <h3>Search for Movie Info</h3>
-                <form>
+                <form onSubmit={this.callAPI}>
                     <label htmlFor="title_search">Title:</label>
                     <br />
                     <input
