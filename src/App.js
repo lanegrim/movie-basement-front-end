@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Header from './components/Header'
+import Movie from "./components/Movie"
+import AddForm from "./components/AddForm"
+
+
 
 class App extends Component {
   state = {
@@ -16,15 +21,22 @@ class App extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("https://movie-basement-api.herokuapp.com/api/movies", this.state)
+  addMovie = (movie) => {
+    axios.post('https://movie-basement-api.herokuapp.com/api/movies', movie)
       .then((response) => {
-        this.getMovie();
-      });
-  };
-  getMovie = () => {
+        this.getMovies()
+        this.setState({
+          title: "",
+          image: "",
+          year: "",
+          synopsis: "",
+          rating: "",
+          title_search: "",
+        })
+      })
+  }
+
+  getMovies = () => {
     axios
       .get("https://movie-basement-api.herokuapp.com/api/movies")
       .then(
@@ -37,12 +49,14 @@ class App extends Component {
     axios
       .delete(
         "https://movie-basement-api.herokuapp.com/api/movies/" +
-          event.target.value
+        event.target.value
       )
       .then((response) => {
-        this.getPeople();
+        this.getMovies();
       });
   };
+
+  //UPDATE 
   updateMovie = (event) => {
     event.preventDefault();
     const id = event.target.id;
@@ -52,7 +66,7 @@ class App extends Component {
         this.state
       )
       .then((response) => {
-        this.getPeople();
+        this.getMovies();
         this.setState({
           title: "",
           image: "",
@@ -60,114 +74,28 @@ class App extends Component {
           synopsis: "",
           rating: "",
         });
-      });
+      })
+      .catch((error) => console.error(error));
   };
+
+  //DID MOUNT
   componentDidMount = () => {
-    this.getMovie();
+    this.getMovies();
   };
-  render() {
+
+  render = () => {
     return (
       <div>
-        <h1> Movie Basement </h1>
-        <h2>Create New Movie</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title:</label>
-          <br />
-          <input
-            type="text"
-            id="title"
-            onChange={this.handleChange}
-            value={this.state.title}
-          />
-          <br />
-          <label htmlFor="image">image:</label>
-          <br />
-          <input
-            type="text"
-            id="image"
-            onChange={this.handleChange}
-            value={this.state.image}
-          />
-          <br />
-          <label htmlFor="synopsis">synopsis:</label>
-          <br />
-          <input
-            type="text"
-            id="synopsis"
-            onChange={this.handleChange}
-            value={this.state.synopsis}
-          />
-          <br />
-          <label htmlFor="year">year:</label>
-          <br />
-          <input
-            type="text"
-            id="year"
-            onChange={this.handleChange}
-            value={this.state.year}
-          />
-          <br />
-          <label htmlFor="rating">rating:</label>
-          <br />
-          <input
-            type="text"
-            id="rating"
-            onChange={this.handleChange}
-            value={this.state.rating}
-          />
-          <br />
-          <input type="submit" value="Create Movie" />
-        </form>
+        <AddForm addMovie={this.addMovie} />
         {this.state.movies.map((movie) => {
-          return (
-            <div className="movie">
-              <h4>{movie.title}</h4>
-              <img src={movie.image} />
-              <p>{movie.synopsis}</p>
-              <h4> released: {movie.year}</h4>
-              <h4>{movie.rating}</h4>
-              <button value={movie.id} onClick={this.deleteMovie}>
-                Delete Movie
-              </button>
-              <details>
-                <summary>Edit Movie</summary>
-                <form id={movie.id} onSubmit={this.updateMovie}>
-                  <label htmlFor="title">Title</label>
-                  <br />
-                  <input type="text" id="title" onChange={this.handleChange} />
-                  <br />
-                  <label htmlFor="image">image</label>
-                  <br />
-                  <input type="text" id="image" onChange={this.handleChange} />
-                  <br />
-                  <br />
-                  <label htmlFor="synopsis">synopsis</label>
-                  <br />
-                  <input
-                    type="text"
-                    id="synopsis"
-                    onChange={this.handleChange}
-                  />
-                  <br />
-                  <br />
-                  <label htmlFor="year">year</label>
-                  <br />
-                  <input type="text" id="year" onChange={this.handleChange} />
-                  <br />
-                  <br />
-                  <label htmlFor="rating">rating</label>
-                  <br />
-                  <input type="text" id="rating" onChange={this.handleChange} />
-                  <br />
-                  <input type="submit" value="Update Movie" />
-                </form>
-              </details>
-            </div>
-          );
+          return <Movie movie={movie}
+            handleChange={this.handleChange}
+            deleteMovie={this.deleteMovie}
+            updateMovie={this.updateMovie} />;
         })}
       </div>
     );
   }
 }
 
-export default App;
+export default App
