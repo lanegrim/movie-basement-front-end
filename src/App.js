@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
-import Movie from './components/EditForm'
-import Nav from './components/Header'
-
 import axios from "axios";
-import Movie from "./components/Movie";
+import Header from './components/Header'
+import Movie from "./components/Movie"
+import AddForm from "./components/AddForm"
+
+
 
 class App extends Component {
   state = {
@@ -21,15 +21,22 @@ class App extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("https://movie-basement-api.herokuapp.com/api/movies", this.state)
+  addMovie = (movie) => {
+    axios.post('https://movie-basement-api.herokuapp.com/api/movies', movie)
       .then((response) => {
-        this.getMovie();
-      });
-  };
-  getMovie = () => {
+        this.getMovies()
+        this.setState({
+          title: "",
+          image: "",
+          year: "",
+          synopsis: "",
+          rating: "",
+          title_search: "",
+        })
+      })
+  }
+
+  getMovies = () => {
     axios
       .get("https://movie-basement-api.herokuapp.com/api/movies")
       .then(
@@ -42,10 +49,10 @@ class App extends Component {
     axios
       .delete(
         "https://movie-basement-api.herokuapp.com/api/movies/" +
-          event.target.value
+        event.target.value
       )
       .then((response) => {
-        this.getMovie();
+        this.getMovies();
       });
   };
 
@@ -59,7 +66,7 @@ class App extends Component {
         this.state
       )
       .then((response) => {
-        this.getMovie();
+        this.getMovies();
         this.setState({
           title: "",
           image: "",
@@ -67,22 +74,28 @@ class App extends Component {
           synopsis: "",
           rating: "",
         });
-      });
+      })
+      .catch((error) => console.error(error));
   };
 
   //DID MOUNT
   componentDidMount = () => {
-    this.getMovie();
+    this.getMovies();
   };
-  render() {
+
+  render = () => {
     return (
       <div>
+        <AddForm addMovie={this.addMovie} />
         {this.state.movies.map((movie) => {
-          return <Movie movie={movie} />;
+          return <Movie movie={movie}
+            handleChange={this.handleChange}
+            deleteMovie={this.deleteMovie}
+            updateMovie={this.updateMovie} />;
         })}
       </div>
     );
   }
 }
 
-export default App;
+export default App

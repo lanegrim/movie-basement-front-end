@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+
 export default class AddForm extends Component {
     state = {
         title: "",
@@ -19,9 +20,18 @@ export default class AddForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.addMovie(this.state)
+        this.setState({
+            title: "",
+            image: "",
+            year: "",
+            synopsis: "",
+            rating: "",
+            title_search: "",
+        })
     }
 
-    callAPI = () => {
+    callAPI = (event) => {
+        event.preventDefault()
         this.setState({
             title: "",
             image: "",
@@ -31,7 +41,7 @@ export default class AddForm extends Component {
             title_search: "",
         })
         axios
-            .get("http://www.omdbapi.com/?t=" + this.state.title_search + "apikey=" + process.env.APIKEY)
+            .get("http://www.omdbapi.com/?t=" + this.state.title_search + "&apikey=" + process.env.REACT_APP_APIKEY)
             .then(
                 (response) => this.setState({
                     title: response.data.Title,
@@ -47,22 +57,25 @@ export default class AddForm extends Component {
     render() {
         return (
             <div>
-                <h2>Create New Movie</h2>
                 <h3>Search for Movie Info</h3>
                 <form onSubmit={this.callAPI}>
                     <label htmlFor="title_search">Title:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="title_search"
                         onChange={this.handleChange}
                         value={this.state.title_search}
                     />
+                    <input type="submit" value="Search for Movie" />
                 </form>
+                <h2>Create New Movie</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="title">Title:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="title"
                         onChange={this.handleChange}
@@ -72,6 +85,7 @@ export default class AddForm extends Component {
                     <label htmlFor="image">image:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="image"
                         onChange={this.handleChange}
@@ -81,6 +95,7 @@ export default class AddForm extends Component {
                     <label htmlFor="synopsis">synopsis:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="synopsis"
                         onChange={this.handleChange}
@@ -90,6 +105,7 @@ export default class AddForm extends Component {
                     <label htmlFor="year">year:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="year"
                         onChange={this.handleChange}
@@ -99,6 +115,7 @@ export default class AddForm extends Component {
                     <label htmlFor="rating">rating:</label>
                     <br />
                     <input
+                        required
                         type="text"
                         id="rating"
                         onChange={this.handleChange}
@@ -113,19 +130,3 @@ export default class AddForm extends Component {
 }
 
 
-// // Move to app.js
-// // Refactor appropriately
-// addMovie = (movie) => {
-//     axios.post('http://localhost:8000/api/characters', movie)
-//         .then((response) => {
-//             this.getMovies()
-//             this.setState({
-//                 title: "",
-//                 image: "",
-//                 year: "",
-//                 synopsis: "",
-//                 rating: "",
-//                 title_search: "",
-//             })
-//         })
-// }
