@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+
+import Movie from './components/EditForm'
+import Nav from './components/Header'
+
 import axios from "axios";
 import Movie from "./components/Movie";
 
@@ -44,6 +48,8 @@ class App extends Component {
         this.getMovie();
       });
   };
+
+  //UPDATE 
   updateMovie = (event) => {
     event.preventDefault();
     const id = event.target.id;
@@ -63,6 +69,8 @@ class App extends Component {
         });
       });
   };
+
+  //DID MOUNT
   componentDidMount = () => {
     this.getMovie();
   };
