@@ -1,0 +1,26 @@
+.main-footer {
+    
+    text-align: center;
+    background-color: #dc3545;
+    color: white;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.col{
+   margin: 10px; 
+}
+
+.fab{
+    margin: 5px;
+    font-size: 2rem;
+}

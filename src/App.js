@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from './components/Header'
 import Movie from "./components/Movie"
 import AddForm from "./components/AddForm"
+import Footer from "./components/Footer"
 
 
 
@@ -86,6 +87,7 @@ class App extends Component {
   render = () => {
     return (
       <div>
+        <Header />
         <AddForm addMovie={this.addMovie} />
         {this.state.movies.map((movie) => {
           return <Movie movie={movie}
@@ -93,6 +95,7 @@ class App extends Component {
             deleteMovie={this.deleteMovie}
             updateMovie={this.updateMovie} />;
         })}
+        <Footer />
       </div>
     );
   }

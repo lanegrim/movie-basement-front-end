@@ -4,12 +4,12 @@ class Header extends React.Component {
   render = () => {
     return (
       <div className='navbar'>
-        <ul className="nav nav-tabs justify-content-end">
+        <ul>
           <li className='nav-item'>
-            <a className="nav-link active" href='#'>Sign Up</a>
+            <a href='#'>Sign Up</a>
           </li>
           <li className='nav-item'>
-            <a className="nav-link active" href='#'>Log In</a>
+            <a href='#'>Log In</a>
           </li>
         </ul>
       </div>
