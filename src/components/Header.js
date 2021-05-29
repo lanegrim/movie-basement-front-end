@@ -1,17 +1,21 @@
 import React from 'react'
 
 class Header extends React.Component {
+
+  addMovieButtonText = () => {
+    if (this.props.showAddForm === false) {
+      return ("Add a Movie")
+    }
+    return ("Hide New Movie Form")
+  }
+
   render = () => {
     return (
       <div className='navbar'>
-        <ul className="nav nav-tabs justify-content-end">
-          <li className='nav-item'>
-            <a className="nav-link active" href='#'>Sign Up</a>
-          </li>
-          <li className='nav-item'>
-            <a className="nav-link active" href='#'>Log In</a>
-          </li>
-        </ul>
+        <h1>Movie Basement</h1>
+        <button onClick={this.props.toggleAddForm} className="add-button">
+          {this.addMovieButtonText()}
+        </button>
       </div>
     )
   }

@@ -1,4 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f39f86;
+  background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+}
 
-/* body {
-  background-color: gray;
-} */
+/* Header */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .25em 1em;
+}
+
+.add-button {
+  text-align: end;
+  padding: 1em;
+}
+
+/* Search Box */
+#search-wrapper {
+  background: url("./cinema.jpeg") no-repeat top center;
+  width: 100%;
+  height: 45vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie-Search {
+  width: 50%;
+  position: relative;
+}
+.movie-Search input[type="text"] {
+  width: 100%;
+  padding: 20px;
+  padding-right: 60px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
+  outline: none;
+}
+.fa-search {
+  position: absolute;
+  top: 50%;
+  transform: translateY(50%);
+  right: 25px;
+  color: #fff;
+}
+::-webkit-input-placeholder {
+  color: #fff;
+}
+
+/* Add Form */
+.movie-form-container {
+  display: flex;
+  height: 40vh;
+  justify-content: center;
+  align-items: center;
+}
+.movie-add {
+  background: #fff;
+  max-width: 700px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+.movie-add .create-movie {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.movie-add .create-movie::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+}
+.movie-add form .movie-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+form .movie-details .input-box {
+  margin: 20px 0 12px 0;
+  width: calc(100% / 2 - 20px);
+}
+.movie-details .input-box .details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.movie-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  border-bottom-width: 3px;
+  transition: all 0.3s ease;
+}
+.movie-details .input-box input:focus,
+.movie-details .input-box input:valid {
+  border-color: #f39f86;
+}
+form .movie-button {
+  height: 45px;
+  margin: 45px 0;
+}
+form .movie-button input,
+.add-button {
+  height: 100%;
+  position: relative;
+  right: 30px;
+  width: 300px;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+}
+form .movie-button input:hover {
+  background-image: linear-gradient(-315deg, #f39f86 0%, #f9d976 74%);
+}
+/* movie cards */
+.main {
+  border-radius: 30px;
+  overflow: hidden;
+  height: 600px;
+  width: 40%;
+  margin: 30px auto;
+  background-color: white;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.1);
+}
+.movie-img {
+  padding: 10px 10px;
+  position: relative;
+}
+.backimg {
+  height: 310px;
+  width: 100%;
+  border-radius: 30px 30px 10px 30px;
+}
+.movie-cover {
+  position: absolute;
+  height: 120px;
+  bottom: -62px;
+  left: 32px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.content-title {
+  margin-left: 130px;
+  text-transform: capitalize;
+  margin-top: 20px;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+.head1 {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
+  width: 100%;
+  margin-top: 25px;
+}
+.head1 p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  font-size: 0.9em;
+}
+.head2 {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
+  width: 100%;
+}
+.head2 p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+.head3 {
+  height: 30px;
+  font-size: 0.8em;
+  padding: 0px 26px;
+  width: 100%;
+}
+.editform {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
+  width: 100%;
+}
+.movie-button1 {
+  height: 100%;
+  position: relative;
+  right: 30px;
+  width: 150px;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+}
+.movie-button1:hover {
+  background-image: linear-gradient(-315deg, #f39f86 0%, #f9d976 74%);
+}
