@@ -16,6 +16,7 @@ class App extends Component {
     rating: "",
     movies: [],
   };
+
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -63,7 +64,7 @@ class App extends Component {
     const id = event.target.id;
     axios
       .put(
-        "http://movie-basement-api.herokuapp.com/api/movies/" + id,
+        "https://movie-basement-api.herokuapp.com/api/movies/" + id,
         this.state
       )
       .then((response) => {
