@@ -15,6 +15,7 @@ class App extends Component {
     synopsis: "",
     rating: "",
     movies: [],
+    showAddForm: false,
   };
 
   handleChange = (event) => {
@@ -33,7 +34,6 @@ class App extends Component {
           year: "",
           synopsis: "",
           rating: "",
-          title_search: "",
         })
       })
   }
@@ -80,6 +80,12 @@ class App extends Component {
       .catch((error) => console.error(error));
   };
 
+  toggleAddForm = () => {
+    this.setState({
+      showAddForm: !this.state.showAddForm,
+    })
+  }
+
   //DID MOUNT
   componentDidMount = () => {
     this.getMovies();
@@ -88,13 +94,17 @@ class App extends Component {
   render = () => {
     return (
       <div>
-        <Header />
-        <AddForm addMovie={this.addMovie} />
+        <Header toggleAddForm={this.toggleAddForm}
+          showAddForm={this.state.showAddForm} />
+        <AddForm addMovie={this.addMovie}
+          showAddForm={this.state.showAddForm}
+          toggleAddForm={this.toggleAddForm} />
         {this.state.movies.map((movie) => {
           return <Movie movie={movie}
             handleChange={this.handleChange}
             deleteMovie={this.deleteMovie}
-            updateMovie={this.updateMovie} />;
+            updateMovie={this.updateMovie}
+            key={movie.id} />;
         })}
         <Footer />
       </div>
