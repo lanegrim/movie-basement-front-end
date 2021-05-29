@@ -4,7 +4,11 @@ class EditForm extends Component {
   render() {
     return (
       <div className="edit">
-        <button value={this.props.movie.id} onClick={this.props.deleteMovie}>
+        <button
+          className="movie-button1"
+          value={this.props.movie.id}
+          onClick={this.props.deleteMovie}
+        >
           Delete Movie
         </button>
         <details>
@@ -62,8 +66,9 @@ class EditForm extends Component {
               id="rating"
               onChange={this.props.handleChange}
             />
-            <br />
-            <input type="submit" value="Update Movie" />
+            <div className="movie-button">
+              <input type="submit" value="Update Movie" />
+            </div>
           </form>
         </details>
       </div>
