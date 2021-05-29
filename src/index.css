@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   background-color: #f39f86;
@@ -42,6 +43,7 @@ body {
 ::-webkit-input-placeholder {
   color: #fff;
 }
+
 /* Add Form */
 .movie-form-container {
   display: flex;
@@ -120,14 +122,89 @@ form .movie-button input:hover {
   background-image: linear-gradient(-315deg, #f39f86 0%, #f9d976 74%);
 }
 /* movie cards */
-.movie-card {
-  display: flex;
-  flex-direction: column;
+.main {
+  border-radius: 30px;
+  overflow: hidden;
+  height: 600px;
+  width: 40%;
+  margin: 30px auto;
+  background-color: white;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.1);
 }
-.card-cover {
-  height: 150px;
+.movie-img {
+  padding: 10px 10px;
+  position: relative;
+}
+.backimg {
+  height: 310px;
+  width: 100%;
+  border-radius: 30px 30px 10px 30px;
+}
+.movie-cover {
+  position: absolute;
+  height: 120px;
+  bottom: -62px;
+  left: 32px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.content-title {
+  margin-left: 130px;
+  text-transform: capitalize;
+  margin-top: 20px;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+.head1 {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
+  width: 100%;
+  margin-top: 25px;
+}
+.head1 p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  font-size: 0.9em;
+}
+.head2 {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
   width: 100%;
 }
-.card-content {
-  flex: 1;
+.head2 p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+.head3 {
+  height: 30px;
+  font-size: 0.8em;
+  padding: 0px 26px;
+  width: 100%;
+}
+.editform {
+  column-count: 2;
+  height: 30px;
+  padding: 0px 26px;
+  width: 100%;
+}
+.movie-button1 {
+  height: 100%;
+  position: relative;
+  right: 30px;
+  width: 150px;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+}
+.movie-button1:hover {
+  background-image: linear-gradient(-315deg, #f39f86 0%, #f9d976 74%);
 }
