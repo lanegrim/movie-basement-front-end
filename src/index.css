@@ -42,7 +42,6 @@ body {
 ::-webkit-input-placeholder {
   color: #fff;
 }
-
 /* Add Form */
 .movie-form-container {
   display: flex;
