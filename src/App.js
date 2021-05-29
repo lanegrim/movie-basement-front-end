@@ -15,6 +15,7 @@ class App extends Component {
     rating: "",
     movies: [],
   };
+
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
