@@ -42,7 +42,7 @@ class App extends Component {
     axios
       .get("https://movie-basement-api.herokuapp.com/api/movies")
       .then(
-        (response) => this.setState({ movies: response.data }),
+        (response) => this.setState({ movies: response.data.reverse() }),
         (err) => console.error(err)
       )
       .catch((error) => console.error(error));
