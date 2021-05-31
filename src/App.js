@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Signup from "./components/Signup"
 import Header from './components/Header'
 import Movie from "./components/Movie"
 import AddForm from "./components/AddForm"
@@ -94,6 +95,7 @@ class App extends Component {
   render = () => {
     return (
       <div>
+        <Signup />
         <Header toggleAddForm={this.toggleAddForm}
           showAddForm={this.state.showAddForm} />
         <AddForm addMovie={this.addMovie}

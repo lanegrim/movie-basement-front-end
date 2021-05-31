@@ -27,7 +27,7 @@ class Footer extends Component {
                 <i className="fab fa-linkedin"></i>
               </a>
             </div>
-            {/* Column2*/}
+            {/* Column3*/}
             <div className="col">
               <h4>Kausar Akther</h4>
               <a href="https://github.com/">

@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #dc3545;
+    color: white;
+    font-size: 2rem;
+}
+
+ul{
+   list-style-type: none; 
+   margin: 0;
+   text-align: right;
+   
+}
+
+.nav-item{
+    color: white;
+}
+
