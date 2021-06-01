@@ -5,6 +5,8 @@ Movie Basement is a movie-journaling and rating app.
 ### Front End
 - JavaScript
 - React.JS
+- HTML
+- CSS
 ### Back End
 - Python
 - Django
@@ -16,8 +18,9 @@ We initially set out to create a full-CRUD app using a React front end and a Dja
 At its core, this project has been an exercise in collaborating to build a multi-component React app.
 
 ## Opportunities for Improvement/Expansion
-- We haven't yet had the time to implment authentication, but we see an opportunity to allow users to create more personalized experiences within the app. This feature would also allow us to restrict what data users are able to see and interact with, depending on ownership.
+- We haven't yet implmented authentication, but we see an opportunity to allow users to create more personalized experiences within the app. This feature would also allow us to restrict what data users are able to see and interact with, depending on ownership. We have begun to experiment with leveraging Firebase to implement this feature, but as of the deadline for this project, this feature has not made it to production.
 - We would also like to implement a search feature and sorting functionality for users' individual collections.
+- Various minor bugs and and styling opportunities persist
 
 ## Visit the Live App!
 - https://movie-basement.herokuapp.com/
