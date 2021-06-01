@@ -5,7 +5,7 @@ import Header from './components/Header'
 import Movie from "./components/Movie"
 import AddForm from "./components/AddForm"
 import Footer from "./components/Footer"
-
+import {BrowserRouter, Router, Switch} from "react-router-dom"
 
 
 class App extends Component {
@@ -95,7 +95,13 @@ class App extends Component {
   render = () => {
     return (
       <div>
-        <Signup />
+        <BrowserRouter>
+          <Switch>
+              <Router path=" / " component={Signup}/>
+          </Switch>
+        </BrowserRouter>
+      <Signup />
+        
         <Header toggleAddForm={this.toggleAddForm}
           showAddForm={this.state.showAddForm} />
         <AddForm addMovie={this.addMovie}
